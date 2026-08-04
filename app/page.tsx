@@ -25,7 +25,7 @@ type Product = {
 
 async function getProducts(): Promise<Product[]> {
 
-  const res = await fetch("http://localhost:3000/api/products", {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/products`, {
     cache: "no-store",
   });
 
