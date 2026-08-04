@@ -1,65 +1,182 @@
 import Image from "next/image";
 
-export default function Home() {
+
+type SheetProductRow = [
+  string, // code
+  string, // category
+  string, // material
+  string, // brand
+  string, // country
+  string, // size
+  string  // image
+];
+
+
+type Product = {
+  code: string;
+  category: string;
+  material: string;
+  brand: string;
+  country: string;
+  size: string;
+  image: string;
+};
+
+
+async function getProducts(): Promise<Product[]> {
+
+  const res = await fetch("http://localhost:3000/api/products", {
+    cache: "no-store",
+  });
+
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch products");
+  }
+
+
+  const data: {
+    success: boolean;
+    products: SheetProductRow[];
+  } = await res.json();
+
+
+  return data.products
+    .filter((item) => item[0] && item[6]) // remove empty rows
+    .map((item) => ({
+      code: item[0],
+      category: item[1],
+      material: item[2],
+      brand: item[3],
+      country: item[4],
+      size: item[5],
+      image: item[6],
+    }));
+
+}
+
+
+
+export default async function Home() {
+
+  const products = await getProducts();
+
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+
+    <main className="min-h-screen bg-gray-100 p-10">
+
+
+      <h1 className="text-5xl font-bold text-center mb-10">
+        Davinci Tile Catalogue
+      </h1>
+
+
+
+      <div className="
+        grid 
+        grid-cols-1 
+        sm:grid-cols-2 
+        md:grid-cols-3 
+        lg:grid-cols-4 
+        gap-8
+      ">
+
+
+        {products.map((product) => (
+
+
+          <div
+            key={product.code}
+            className="
+              bg-white 
+              rounded-xl 
+              shadow-md 
+              overflow-hidden
+              hover:shadow-xl
+              transition
+            "
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+
+
+            {/* Product Image */}
+
+            <div className="relative h-64 w-full">
+
+
+              <Image
+                src={product.image}
+                alt={product.code}
+                fill
+                className="object-cover"
+              />
+
+
+            </div>
+
+
+
+            {/* Product Details */}
+
+            <div className="p-5">
+
+
+              <h2 className="text-xl font-bold mb-2">
+                {product.code}
+              </h2>
+
+
+
+              <p className="text-gray-600">
+                Category: {product.category}
+              </p>
+
+
+
+              <p className="text-gray-600">
+                Material: {product.material}
+              </p>
+
+
+
+              <p className="text-gray-600">
+                Brand: {product.brand}
+              </p>
+
+
+
+              <p className="text-gray-600">
+                Origin: {product.country}
+              </p>
+
+
+
+              {
+                product.size && (
+
+                  <p className="text-gray-600">
+                    Size: {product.size}
+                  </p>
+
+                )
+              }
+
+
+
+            </div>
+
+
+          </div>
+
+
+        ))}
+
+
+      </div>
+
+
+    </main>
+
   );
+
 }
