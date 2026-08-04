@@ -127,25 +127,25 @@ export default async function Home() {
 
 
 
-              <p className="text-gray-600">
+              <p className="text-black">
                 Category: {product.category}
               </p>
 
 
 
-              <p className="text-gray-600">
+              <p className="text-black">
                 Material: {product.material}
               </p>
 
 
 
-              <p className="text-gray-600">
+              <p className="text-black">
                 Brand: {product.brand}
               </p>
 
 
 
-              <p className="text-gray-600">
+              <p className="text-black">
                 Origin: {product.country}
               </p>
 
@@ -154,7 +154,7 @@ export default async function Home() {
               {
                 product.size && (
 
-                  <p className="text-gray-600">
+                  <p className="text-black">
                     Size: {product.size}
                   </p>
 
