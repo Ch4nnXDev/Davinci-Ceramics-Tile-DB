@@ -3,7 +3,7 @@ import "./globals.css";
 
 
 export const metadata: Metadata = {
-  title: "DaVinci Catalogue",
+  title: "Davinci Ceramics Catalogue",
   description: "Davinci IT",
 };
 
