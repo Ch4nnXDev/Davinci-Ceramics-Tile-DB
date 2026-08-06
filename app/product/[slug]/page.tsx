@@ -17,12 +17,15 @@ export default async function Product({params} : {params: {slug: string}}) {
                 <Image alt="" width={500} height={500} src={product?.picture} />
             </div>
             <div className="w-full flex flex-col items-center mt-10">
-                <h3>Size</h3>
+                <h3>Size: {product?.size}</h3>
+                
                 <svg width="100" height="100"></svg>
-                <h3>Color</h3>
+                <h3>Color: {product?.color}</h3>
                 <svg width="100" height="100"></svg>
-                <h3>Sheet Size</h3>
-                <svg width="100" height="100"></svg>
+                <h3>Material: {product?.material}</h3>
+            </div>
+            <div className="w-full flex flex-col items-center mt-10">
+                <h3>Origin: {product?.origin}</h3>
 
             </div>
 

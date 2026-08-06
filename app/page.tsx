@@ -1,5 +1,5 @@
 import Image from "next/image";
-
+import getAllProducts from "../app/lib/getProducts";
 
 type Product = {
   name: string;
@@ -14,37 +14,12 @@ type Product = {
 };
 
 
-async function getProducts(): Promise<Product[]> {
-
-  const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/products`, {
-    next: {
-      revalidate: 3600,
-    },
-  });
-
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch products");
-  }
-
-
-  const data: {
-    success: boolean;
-    products: Product[];
-  } = await res.json();
-
-
-  return data.products.filter(
-    (product) => product.name && product.picture
-  );
-
-}
 
 
 
 export default async function Home() {
 
-  const products = await getProducts();
+  const products = await getAllProducts();
 
 
   return (
