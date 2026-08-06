@@ -22,9 +22,9 @@ export default async function Product({params} : {params: {slug: string}}) {
     };
 
     return (
-        <section className="flex flex-col items-center justify-center min-h-screen py-2 bg-white text-black font-sans">
+        <section className="flex flex-col items-center justify-center min-h-screen py-10 bg-white text-black font-sans">
             <h1 className="text-4xl font-bold mb-4">Product: {product?.name}</h1>
-            <div className="w-full rounded-lg shadow-md p-6 flex flex-col items-center">
+            <div className="w-full rounded-lg p-6 flex flex-col items-center">
                 <Image alt="" width={500} height={500} src={product?.picture} />
             </div>
             <div className="w-full flex flex-col items-center mt-10">
@@ -41,11 +41,11 @@ export default async function Product({params} : {params: {slug: string}}) {
             </div>
 
             <div className="w-full flex flex-col items-center mt-10">
-                <h1 className="text-2xl font-bold mb-4">Application Images</h1>
+                <h1 className="text-2xl font-bold mb-4 p-10">Application Images</h1>
                 {isCanva ? (
-                    <iframe src={checkApplicationImage()} width="600" height="400"></iframe>
+                    <iframe src={checkApplicationImage()} width="1000" height="1000"></iframe>
                 ) : (
-                    <Image alt="" width={500} height={500} src={product?.application_picture} />
+                    <Image alt="" width={1000} height={1000} src={product?.application_picture} />
                 )}
             </div>
 
