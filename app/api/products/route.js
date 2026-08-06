@@ -1,5 +1,4 @@
-import { google } from "googleapis";
-import getAllProducts from "../../lib/getAllProducts";
+import getAllProducts from "../../lib/getProducts";
 
 export async function GET() {
 
