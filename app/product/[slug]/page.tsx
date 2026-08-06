@@ -20,12 +20,12 @@ export default async function Product({params} : {params: {slug: string}}) {
     };
 
     return (
-        <section className="flex flex-col items-center justify-center min-h-screen py-2">
-            <h1 className="text-4xl font-bold mb-4 bg-white text-black bg-white text-black">Product: {product?.name}</h1>
-            <div className="w-full bg-white rounded-lg shadow-md p-6 flex flex-col items-center">
+        <section className="flex flex-col items-center justify-center min-h-screen py-2 bg-white text-black">
+            <h1 className="text-4xl font-bold mb-4">Product: {product?.name}</h1>
+            <div className="w-full rounded-lg shadow-md p-6 flex flex-col items-center">
                 <Image alt="" width={500} height={500} src={product?.picture} />
             </div>
-            <div className="w-full flex flex-col items-center mt-10 bg-white">
+            <div className="w-full flex flex-col items-center mt-10">
                 <h3>Size: {product?.size}</h3>
                 
                 <svg width="100" height="100"></svg>
@@ -33,13 +33,13 @@ export default async function Product({params} : {params: {slug: string}}) {
                 <svg width="100" height="100"></svg>
                 <h3>Material: {product?.material}</h3>
             </div>
-            <div className="w-full flex flex-col items-center mt-10 bg-white">
+            <div className="w-full flex flex-col items-center mt-10">
                 <h3>Origin: {product?.origin}</h3>
 
             </div>
 
-            <div className="w-full flex flex-col items-center mt-10 bg-white">
-                <h1 className="text-2xl font-bold mb-4 text-black">Application Images</h1>
+            <div className="w-full flex flex-col items-center mt-10">
+                <h1 className="text-2xl font-bold mb-4">Application Images</h1>
                 <Image alt="" width={500} height={500} src={checkApplicationImage()} />
             </div>
 
