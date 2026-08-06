@@ -19,7 +19,11 @@ type Product = {
 
 export default async function Home() {
 
+  
+
   const products = await getAllProducts();
+
+  
 
 
   return (
