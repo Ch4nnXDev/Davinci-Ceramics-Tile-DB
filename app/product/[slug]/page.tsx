@@ -9,8 +9,10 @@ export default async function Product({params} : {params: {slug: string}}) {
     const { slug } = await params;
     const product = await getProductBySlug(slug);
 
+    const isCanva = product?.application_picture.includes("canva.com/design");
+
     const checkApplicationImage = () => {
-        if (product?.application_picture.includes("canva.com/design")) {
+        if (isCanva) {
             const url = product?.application_picture.split("?")[0] + "?embed";
             return url;
 
@@ -20,7 +22,7 @@ export default async function Product({params} : {params: {slug: string}}) {
     };
 
     return (
-        <section className="flex flex-col items-center justify-center min-h-screen py-2 bg-white text-black">
+        <section className="flex flex-col items-center justify-center min-h-screen py-2 bg-white text-black font-sans">
             <h1 className="text-4xl font-bold mb-4">Product: {product?.name}</h1>
             <div className="w-full rounded-lg shadow-md p-6 flex flex-col items-center">
                 <Image alt="" width={500} height={500} src={product?.picture} />
@@ -40,7 +42,11 @@ export default async function Product({params} : {params: {slug: string}}) {
 
             <div className="w-full flex flex-col items-center mt-10">
                 <h1 className="text-2xl font-bold mb-4">Application Images</h1>
-                <Image alt="" width={500} height={500} src={checkApplicationImage()} />
+                {isCanva ? (
+                    <iframe src={checkApplicationImage()} width="600" height="400"></iframe>
+                ) : (
+                    <Image alt="" width={500} height={500} src={product?.application_picture} />
+                )}
             </div>
 
         
