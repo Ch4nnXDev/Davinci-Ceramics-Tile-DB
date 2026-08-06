@@ -27,6 +27,7 @@ export default async function Product({params} : {params: {slug: string}}) {
         <section className="min-h-screen bg-white text-gray-900 font-sans px-5 sm:px-8 lg:px-12 py-10">
             <div className="max-w-6xl mx-auto flex flex-col items-center">
 
+
                 <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-center mb-8 mt-10">
                     Product: {product?.name}
                 </h1>
