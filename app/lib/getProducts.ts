@@ -10,12 +10,29 @@ export default async function getAllProducts() {
 
         const response = await sheets.spreadsheets.values.get({
             spreadsheetId: process.env.SHEET_ID,
-            range: "new one-yeshaya!A2:G",
+            range: "new one-yeshaya!A2:K",
         });
 
-        const rows = response.data.values;
+        const rows = response.data.values ?? [];
 
-        return rows;
+        const products = rows.map((row) => ({
+            name: row[0],
+            type: row[1],
+            material: row[2],
+            color: row[3],
+            origin: row[5],
+            size: row[6],
+            picture: row[7],
+            application_picture: row[8],
+            slug: row[9]
+
+        }))
+
+        return products;
+
+
+
+        
 
 
 
