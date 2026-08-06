@@ -22,36 +22,75 @@ export default async function Product({params} : {params: {slug: string}}) {
     };
 
     return (
-        <section className="flex flex-col items-center justify-center min-h-screen py-10 bg-white text-black font-sans">
-            <h1 className="text-4xl font-bold mb-4">Product: {product?.name}</h1>
-            <div className="w-full rounded-lg p-6 flex flex-col items-center">
-                <Image alt="" width={500} height={500} src={product?.picture} />
-            </div>
-            <div className="w-full flex flex-col items-center mt-10">
-                <h3>Size: {product?.size}</h3>
-                
-                <svg width="100" height="100"></svg>
-                <h3>Color: {product?.color}</h3>
-                <svg width="100" height="100"></svg>
-                <h3>Material: {product?.material}</h3>
-            </div>
-            <div className="w-full flex flex-col items-center mt-10">
-                <h3>Origin: {product?.origin}</h3>
+
+
+        <section className="min-h-screen bg-white text-gray-900 font-sans px-5 sm:px-8 lg:px-12 py-10">
+            <div className="max-w-6xl mx-auto flex flex-col items-center">
+
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-center mb-8 mt-10">
+                    Product: {product?.name}
+                </h1>
+
+                <div className="w-full flex justify-center rounded-xl p-2 sm:p-10">
+                    <Image
+                        alt=""
+                        width={500}
+                        height={500}
+                        src={product?.picture}
+                        className="object-contain w-full max-w-md rounded-xl"
+                    />
+                </div>
+
+
+                <div className="w-full max-w-xl mt-10 grid grid-cols-1 sm:grid-cols-2 gap-6 text-base sm:text-lg">
+                    <div className="border-b pb-3">
+                        <span className="font-semibold">Size</span>
+                        <p className="text-gray-600">{product?.size}</p>
+                    </div>
+
+                    <div className="border-b pb-3">
+                        <span className="font-semibold">Color</span>
+                        <p className="text-gray-600">{product?.color}</p>
+                    </div>
+
+                    <div className="border-b pb-3">
+                        <span className="font-semibold">Material</span>
+                        <p className="text-gray-600">{product?.material}</p>
+                    </div>
+
+                    <div className="border-b pb-3">
+                        <span className="font-semibold">Origin</span>
+                        <p className="text-gray-600">{product?.origin}</p>
+                    </div>
+                </div>
+
+
+                <div className="w-full mt-16">
+                    <h2 className="text-2xl sm:text-3xl font-semibold text-center mb-8">
+                        Application Images
+                    </h2>
+
+                    <div className="w-full flex justify-center rounded-xl overflow-hidden bg-gray-50 p-4 sm:p-6">
+                        {isCanva ? (
+                            <iframe
+                                src={checkApplicationImage()}
+                                width="100%"
+                                height="800"
+                                className="w-full max-w-5xl rounded-lg"
+                            />
+                        ) : (
+                            <Image
+                                alt=""
+                                width={1000}
+                                height={1000}
+                                src={product?.application_picture}
+                                className="w-full max-w-5xl object-contain"
+                            />
+                        )}
+                    </div>
+                </div>
 
             </div>
-
-            <div className="w-full flex flex-col items-center mt-10">
-                <h1 className="text-2xl font-bold mb-4 p-10">Application Images</h1>
-                {isCanva ? (
-                    <iframe src={checkApplicationImage()} width="1000" height="1000"></iframe>
-                ) : (
-                    <Image alt="" width={1000} height={1000} src={product?.application_picture} />
-                )}
-            </div>
-
-        
-            
-            
         </section>
     );
 
