@@ -10,7 +10,7 @@ export default async function getAllProducts() {
 
         const response = await sheets.spreadsheets.values.get({
             spreadsheetId: process.env.SHEET_ID,
-            range: "new one-yeshaya!A2:K",
+            range: "new one-yeshaya!A3:K",
         });
 
         const rows = response.data.values ?? [];
