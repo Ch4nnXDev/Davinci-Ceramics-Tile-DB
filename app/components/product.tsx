@@ -7,7 +7,9 @@ type ProductCardProps = {
 };
 
 export default function ProductCard({ product }: ProductCardProps) {
+    
   return (
+
     <article
       className="
         group

@@ -2,6 +2,8 @@
 import { Product } from "./../types/product";
 import ProductCard from "./product";
 
+
+
 export default function ProductGrid({products}: {products: Product[]}) {
     return (
         <section className="p-10 w-full">
@@ -18,7 +20,11 @@ export default function ProductGrid({products}: {products: Product[]}) {
                     gap-8"
                 >
                 {products.map((product: Product) => (
-                    <ProductCard product={product}/>
+                    <div key={product.name}>
+                        <ProductCard product={product}/>
+
+                    </div>
+                    
                 
 
             ))}
