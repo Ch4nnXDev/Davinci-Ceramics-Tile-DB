@@ -12,7 +12,7 @@ export default function ProductBrowser({products} : {products: Product[]}) {
     const filteredProducts  = filterProducts(products, searchQ);
 
     return (
-        <section>
+        <section className="bg-white">
 
             <SearchBar searchQ={searchQ} setSearchQ={setSearchQ} />
 
