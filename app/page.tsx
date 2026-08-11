@@ -9,7 +9,7 @@ export default async function Home() {
 
 
   return (
-    
+
 
     <main className="
       min-h-screen 
@@ -58,7 +58,7 @@ export default async function Home() {
 
       </section>
 
-      <section className="flex flex-col w-full h-screen">
+      <section className="flex flex-col w-full h-screen bg-white">
         <ProductBrowser products={products}/>
       </section>
 
