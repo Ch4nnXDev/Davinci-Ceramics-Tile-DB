@@ -1,26 +1,15 @@
-import Image from "next/image";
 import getAllProducts from "../app/lib/getProducts";
-import SearchBar from "./components/searchBar";
-import ProductGrid from "./components/productGrid";
-
-
-
+import ProductBrowser from "./components/productBrowser";
 
 
 export default async function Home() {
 
-  
-
   const products = await getAllProducts();
 
-  
-
-
-
-  
 
 
   return (
+    
 
     <main className="
       min-h-screen 
@@ -64,15 +53,13 @@ export default async function Home() {
           surfaces.
         </p>
 
-        <div className="mx-auto mt-10 p-10 text-sm text-black max-w-2xl">
-          <SearchBar />
-        </div>
+        
 
 
       </section>
 
       <section className="flex flex-col w-full h-screen">
-        <ProductGrid products={products} />
+        <ProductBrowser products={products}/>
       </section>
 
 
