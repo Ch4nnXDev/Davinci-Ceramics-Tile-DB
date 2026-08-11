@@ -84,6 +84,7 @@ export default async function Product({params} : {params: {slug: string}}) {
                                 alt=""
                                 width={1000}
                                 height={1000}
+                                quality={100}
                                 src={product?.application_picture}
                                 className="w-full max-w-5xl object-contain"
                             />

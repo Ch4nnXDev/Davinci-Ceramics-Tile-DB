@@ -1,5 +1,6 @@
 import Image from "next/image";
 import getAllProducts from "../app/lib/getProducts";
+import SearchBar from "./components/searchBar";
 
 type Product = {
   name: string;
@@ -56,9 +57,11 @@ export default async function Home() {
           Davinci Tile Catalogue
         </h1>
 
+        
+
 
         <p className="
-          mt-4
+          mt-10
           text-gray-600
           text-lg
           max-w-2xl
@@ -67,6 +70,10 @@ export default async function Home() {
           Explore our premium collection of tiles, mosaics and architectural
           surfaces.
         </p>
+
+        <div className="mx-auto mt-10 p-10 text-sm text-black max-w-2xl">
+          <SearchBar />
+        </div>
 
 
       </section>
