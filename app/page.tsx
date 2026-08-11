@@ -1,18 +1,7 @@
 import Image from "next/image";
 import getAllProducts from "../app/lib/getProducts";
 import SearchBar from "./components/searchBar";
-
-type Product = {
-  name: string;
-  type: string;
-  material: string;
-  color: string;
-  origin: string;
-  size: string;
-  picture: string;
-  application_picture: string;
-  slug: string;
-};
+import filterProducts from "./lib/filterProducts";
 
 
 
@@ -23,6 +12,10 @@ export default async function Home() {
   
 
   const products = await getAllProducts();
+
+  const filteredProducts = filterProducts(products, )
+
+
 
   
 
