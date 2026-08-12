@@ -31,7 +31,7 @@ export default function FloaterNav() {
         hover:shadow-[0_12px_50px_rgba(0,0,0,0.18)]
       "
     >
-      {/* Products */}
+
       <button
         className="
           group/item
@@ -78,7 +78,7 @@ export default function FloaterNav() {
         </span>
       </button>
 
-      {/* AI Agent */}
+
       <button
         className="
           group/item
