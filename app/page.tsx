@@ -58,7 +58,7 @@ export default async function Home() {
 
       </section>
 
-      <section className="flex flex-col w-full h-screen bg-white">
+      <section className="flex flex-col w-full bg-white">
         <ProductBrowser products={products}/>
       </section>
 
