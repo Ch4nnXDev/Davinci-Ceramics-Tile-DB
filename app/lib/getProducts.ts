@@ -1,6 +1,7 @@
 import { google } from "googleapis";
 import connectToGoogleSheets from "./googleSheetsConnect";
 export default async function getAllProducts() {
+    "use cache";
     try {
         const auth = connectToGoogleSheets();
         const sheets = google.sheets({
