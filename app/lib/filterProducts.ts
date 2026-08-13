@@ -7,18 +7,18 @@ export default function filterProducts(products: Product[], search: string) {
     if (!query) return products;
 
     return products.map((product) => {
-        const name = product.name.toLowerCase().trim().replace(/\s+/g, "")
-        const type = product.type.toLowerCase().trim().replace(/\s+/g, "")
-        const material = product.material.toLowerCase().trim().replace(/\s+/g, "")
-        const color = product.color.toLowerCase().trim().replace(/\s+/g, "")
-        const size = product.size.toLowerCase().trim().replace(/\s+/g, "")
+        const name = product.name.toLowerCase().trim().replace(/\s+/g, "") ?? "";
+        const type = product.type.toLowerCase().trim().replace(/\s+/g, "") ?? "";
+        const material = product.material.toLowerCase().trim().replace(/\s+/g, "") ?? "";
+        const color = product.color.toLowerCase().trim().replace(/\s+/g, "") ?? "";
+        const size = product.size.toLowerCase().trim().replace(/\s+/g, "") ?? "";
 
 
         let score = 0;
 
         if (name === query) score += 100;
-        else if (name.startsWith(query)) score += 80
-        else if (name.includes(query)) score += 60
+        else if (name.startsWith(query)) score += 80;
+        else if (name.includes(query)) score += 60;
 
         if (material === query) score += 40;
         else if (material.includes(query)) score += 30;
@@ -26,7 +26,7 @@ export default function filterProducts(products: Product[], search: string) {
         if (type === query) score += 30;
         else if (type.includes(query)) score += 20;
 
-        if (color === query) score += 20;
+        if (color === query) score += 80;
         else if (color.includes(query)) score += 15;
 
         if (size === query) score += 10;
