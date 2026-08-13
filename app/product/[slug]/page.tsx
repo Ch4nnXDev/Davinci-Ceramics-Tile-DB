@@ -1,10 +1,22 @@
-
+import { Suspense } from 'react';
 import Image from "next/image";
 import getProductBySlug from "@/app/lib/getProductBySlug";
 
-export const dynamic = "force-dynamic";
+export default function Page({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  return (
+    <Suspense fallback={<div>Loading product...</div>}>
+      <Product params={params} />
+    </Suspense>
+  );
+}
 
-export default async function Product({params} : {params: {slug: string}}) {
+
+
+async function Product({params} : {params: Promise<{ slug: string }>}) {
 
     
     

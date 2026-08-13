@@ -1,5 +1,6 @@
 import getAllProducts from "./getProducts";
 
+
 export default async function getProductBySlug(slug: string) {
     "use cache";
     try {
