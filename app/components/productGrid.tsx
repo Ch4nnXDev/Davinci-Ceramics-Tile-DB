@@ -20,6 +20,7 @@ export default function ProductGrid({products}: {products: Product[]}) {
                     gap-8"
                 >
                 {products.map((product: Product) => (
+                    
                     <div key={product.name}>
                         <ProductCard product={product}/>
 
