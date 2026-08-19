@@ -8,15 +8,32 @@ import filterProducts from "../lib/filterProducts";
 export default function ProductBrowser({products} : {products: Product[]}) {
 
     const [searchQ, setSearchQ] = useState("");
+    const [visibleCount, setVisibleCount] = useState(20);
+    
 
     const filteredProducts  = filterProducts(products, searchQ);
+
+    const visibleProducts = filteredProducts.slice(0, visibleCount);
+
 
     return (
         <section className="bg-white">
 
             <SearchBar searchQ={searchQ} setSearchQ={setSearchQ} />
 
-            <ProductGrid products={filteredProducts}/>
+
+            <ProductGrid products={visibleProducts}/>
+
+            <div className="ml-12">
+                <button
+                    className="mt-5 px-6 py-3 text-gray-700 border border-gray-500 rounded-lg hover:bg-gray-100"
+                    onClick={() => setVisibleCount((prev) => prev + 20)}
+                >
+                    Load More
+                </button>
+            </div>
+
+
         </section>
     )
 
