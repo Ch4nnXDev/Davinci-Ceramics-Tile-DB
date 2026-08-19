@@ -19,9 +19,9 @@ export default function ProductGrid({products}: {products: Product[]}) {
                     lg:grid-cols-4
                     gap-8"
                 >
-                {products.map((product: Product) => (
+                {products.map((product: Product, index) => (
                     
-                    <div key={product.name}>
+                    <div key={`${product.name ?? "product"}-${index}`}>
                         <ProductCard product={product}/>
 
                     </div>

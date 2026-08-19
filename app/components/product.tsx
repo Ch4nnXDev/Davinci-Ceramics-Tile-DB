@@ -1,15 +1,15 @@
 import Image from "next/image";
 import { Product } from "./../types/product";
 
-
 type ProductCardProps = {
   product: Product;
 };
 
 export default function ProductCard({ product }: ProductCardProps) {
-    
-  return (
+  const picture = product.picture ?? "";
+  const name = product.name ?? "Product";
 
+  return (
     <article
       className="
         group
@@ -33,17 +33,24 @@ export default function ProductCard({ product }: ProductCardProps) {
           bg-gray-100
         "
       >
-        <Image
-          src={product.picture}
-          alt={product.name}
-          fill
-          className="
-            object-cover
-            transition-transform
-            duration-500
-            group-hover:scale-110
-          "
-        />
+        {picture ? (
+          <Image
+            src={picture}
+            alt={name}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="
+              object-cover
+              transition-transform
+              duration-500
+              group-hover:scale-110
+            "
+          />
+        ) : (
+          <div className="flex h-full items-center justify-center text-gray-400">
+            No image available
+          </div>
+        )}
       </div>
 
       <div className="p-6">
@@ -55,7 +62,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             mb-4
           "
         >
-          {product.name}
+          {name}
         </h2>
 
         <div
@@ -69,28 +76,28 @@ export default function ProductCard({ product }: ProductCardProps) {
             <span className="font-semibold text-gray-900">
               Type:
             </span>{" "}
-            {product.type}
+            {product.type ?? ""}
           </p>
 
           <p>
             <span className="font-semibold text-gray-900">
               Material:
             </span>{" "}
-            {product.material}
+            {product.material ?? ""}
           </p>
 
           <p>
             <span className="font-semibold text-gray-900">
               Color:
             </span>{" "}
-            {product.color}
+            {product.color ?? ""}
           </p>
 
           <p>
             <span className="font-semibold text-gray-900">
               Origin:
             </span>{" "}
-            {product.origin}
+            {product.origin ?? ""}
           </p>
 
           {product.size && (
@@ -131,4 +138,3 @@ export default function ProductCard({ product }: ProductCardProps) {
     </article>
   );
 }
-
