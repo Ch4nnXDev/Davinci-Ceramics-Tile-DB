@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Product } from "./../types/product";
+import { useRouter } from "next/navigation";
 
 type ProductCardProps = {
   product: Product;
@@ -8,6 +9,10 @@ type ProductCardProps = {
 export default function ProductCard({ product }: ProductCardProps) {
   const picture = product.picture ?? "";
   const name = product.name ?? "Product";
+
+  const router = useRouter();
+
+
 
   return (
     <article
@@ -24,6 +29,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         duration-300
         hover:-translate-y-2
       "
+      onClick={() => {router.push(`/product/${product.slug}`)}}
     >
       <div
         className="

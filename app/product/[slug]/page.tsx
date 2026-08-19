@@ -23,11 +23,11 @@ async function Product({params} : {params: Promise<{ slug: string }>}) {
     const { slug } = await params;
     const product = await getProductBySlug(slug);
 
-    const isCanva = product?.application_picture.includes("canva.com/design");
+    const isCanva = product?.application_picture?.includes("canva.com/design") ?? false;
 
     const checkApplicationImage = () => {
         if (isCanva) {
-            const url = product?.application_picture.split("?")[0] + "?embed";
+            const url = product?.application_picture?.split("?")[0] + "?embed";
             return url;
 
         } else {
