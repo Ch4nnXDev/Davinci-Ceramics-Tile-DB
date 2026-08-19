@@ -10,7 +10,7 @@ export default function connectToGoogleSheets() {
                 client_email: clientEmail,
                 private_key: privateKey,
             },
-            scopes: ["https://www.googleapis.com/auth/spreadsheets.readonly"],
+            scopes: ["https://www.googleapis.com/auth/spreadsheets"],
         });
 
         return auth;
