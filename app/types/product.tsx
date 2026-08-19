@@ -8,6 +8,7 @@ export type Product = {
   picture: string;
   application_picture: string;
   slug: string;
+  stock: string
 };
 
 

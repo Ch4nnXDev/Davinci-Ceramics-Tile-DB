@@ -77,6 +77,10 @@ async function Product({params} : {params: Promise<{ slug: string }>}) {
                         <span className="font-semibold">Origin</span>
                         <p className="text-gray-600">{product?.origin}</p>
                     </div>
+                    <div className="border-b pb-3">
+                        <span className="font-semibold">Stock</span>
+                        <p className="text-gray-600">{product?.stock}</p>
+                    </div>
                 </div>
 
 

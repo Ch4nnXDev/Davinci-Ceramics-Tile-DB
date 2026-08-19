@@ -114,6 +114,15 @@ export default function ProductCard({ product }: ProductCardProps) {
               {product.size}
             </p>
           )}
+
+          {product.stock && (
+            <p>
+              <span className="font-semibold text-gray-900">
+                Stock:
+              </span>{" "}
+              {product.stock}
+            </p>
+          )} 
         </div>
 
         <div

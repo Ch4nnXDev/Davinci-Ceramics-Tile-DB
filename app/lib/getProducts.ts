@@ -25,7 +25,8 @@ export default async function getAllProducts() {
             size: row[6],
             picture: row[7],
             application_picture: row[8],
-            slug: row[9]
+            slug: row[9],
+            stock: row[10]
 
         }))
 
