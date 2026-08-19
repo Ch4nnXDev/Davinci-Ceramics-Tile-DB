@@ -7,11 +7,11 @@ export default function filterProducts(products: Product[], search: string) {
     if (!query) return products;
 
     return products.map((product) => {
-        const name = product.name.toLowerCase().trim().replace(/\s+/g, "") ?? "";
-        const type = product.type.toLowerCase().trim().replace(/\s+/g, "") ?? "";
-        const material = product.material.toLowerCase().trim().replace(/\s+/g, "") ?? "";
-        const color = product.color.toLowerCase().trim().replace(/\s+/g, "") ?? "";
-        const size = product.size.toLowerCase().trim().replace(/\s+/g, "") ?? "";
+        const name = (product.name ?? "").toLowerCase().trim().replace(/\s+/g, "");
+        const type = (product.type ?? "").toLowerCase().trim().replace(/\s+/g, "");
+        const material = (product.material ?? "").toLowerCase().trim().replace(/\s+/g, "");
+        const color = (product.color ?? "").toLowerCase().trim().replace(/\s+/g, "");
+        const size = (product.size ?? "").toLowerCase().trim().replace(/\s+/g, "");
 
 
         let score = 0;
