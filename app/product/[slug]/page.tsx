@@ -1,6 +1,9 @@
 import { Suspense } from 'react';
 import Image from "next/image";
 import getProductBySlug from "@/app/lib/getProductBySlug";
+import ProductInfoGrid from '@/app/components/productInforGrid';
+
+
 
 export default function Page({
   params,
@@ -56,32 +59,7 @@ async function Product({params} : {params: Promise<{ slug: string }>}) {
                     />
                 </div>
 
-
-                <div className="w-full max-w-xl mt-10 grid grid-cols-1 sm:grid-cols-2 gap-6 text-base sm:text-lg">
-                    <div className="border-b pb-3">
-                        <span className="font-semibold">Size</span>
-                        <p className="text-gray-600">{product?.size}</p>
-                    </div>
-
-                    <div className="border-b pb-3">
-                        <span className="font-semibold">Color</span>
-                        <p className="text-gray-600">{product?.color}</p>
-                    </div>
-
-                    <div className="border-b pb-3">
-                        <span className="font-semibold">Material</span>
-                        <p className="text-gray-600">{product?.material}</p>
-                    </div>
-
-                    <div className="border-b pb-3">
-                        <span className="font-semibold">Origin</span>
-                        <p className="text-gray-600">{product?.origin}</p>
-                    </div>
-                    <div className="border-b pb-3">
-                        <span className="font-semibold">Stock</span>
-                        <p className="text-gray-600">{product?.stock}</p>
-                    </div>
-                </div>
+                <ProductInfoGrid product={product}/>
 
 
                 <div className="w-full mt-16">

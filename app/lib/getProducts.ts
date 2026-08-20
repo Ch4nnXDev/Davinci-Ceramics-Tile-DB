@@ -16,7 +16,7 @@ export default async function getAllProducts() {
 
         const rows = response.data.values ?? [];
 
-        const products = rows.map((row) => ({
+        const products = rows.map((row, index) => ({
             name: row[0],
             type: row[1],
             material: row[2],
@@ -26,16 +26,13 @@ export default async function getAllProducts() {
             picture: row[7],
             application_picture: row[8],
             slug: row[9],
-            stock: row[10]
+            stock: row[10],
+
+            rowNo: index + 3
 
         }))
 
         return products;
-
-
-
-        
-
 
 
         
