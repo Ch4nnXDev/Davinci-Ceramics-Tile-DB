@@ -24,7 +24,7 @@ export default function ProductBrowser({products} : {products: Product[]}) {
 
             <ProductGrid products={visibleProducts}/>
 
-            <div className="ml-12">
+            <div className="ml-4">
                 <button
                     className="px-3 py-3 text-sm text-gray-700 border border-gray-500 rounded-lg hover:bg-gray-100"
                     onClick={() => setVisibleCount((prev) => prev + 20)}
