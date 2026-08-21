@@ -26,7 +26,7 @@ export default function ProductBrowser({products} : {products: Product[]}) {
 
             <div className="ml-12">
                 <button
-                    className="mt-2 px-3 py-3 text-gray-700 border border-gray-500 rounded-lg hover:bg-gray-100"
+                    className="px-3 py-3 text-sm text-gray-700 border border-gray-500 rounded-lg hover:bg-gray-100"
                     onClick={() => setVisibleCount((prev) => prev + 20)}
                 >
                     Load More
