@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import ServiceWorkerRegistration from "./components/serviceWorkerRegistration";
 import "./globals.css";
 import FloaterNav from "./components/floater-nav";
 
@@ -18,6 +19,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <main>
+          <ServiceWorkerRegistration />
           {children}
 
         </main>
