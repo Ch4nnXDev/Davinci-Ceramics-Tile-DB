@@ -6,6 +6,16 @@ import FloaterNav from "./components/floater-nav";
 export const metadata: Metadata = {
   title: "Davinci Ceramics Catalogue",
   description: "Davinci IT",
+
+  appleWebApp: {
+      capable: true,
+      title: "Davinci Tiles",
+      statusBarStyle: "default",
+    },
+
+    icons: {
+      apple: "/icons/apple-touch-icon.png",
+    },
 };
 
 export default function RootLayout({
