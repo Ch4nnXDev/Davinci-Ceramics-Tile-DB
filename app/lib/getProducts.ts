@@ -1,7 +1,10 @@
 import { google } from "googleapis";
 import connectToGoogleSheets from "./googleSheetsConnect";
+import { cacheTag, cacheLife } from "next/cache";
 export default async function getAllProducts() {
     "use cache";
+    cacheTag("products")
+    cacheLife("hours")
     try {
         const auth = connectToGoogleSheets();
         const sheets = google.sheets({
