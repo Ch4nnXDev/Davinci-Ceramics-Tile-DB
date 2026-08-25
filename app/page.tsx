@@ -1,8 +1,8 @@
 import getAllProducts from "../app/lib/getProducts";
 import ProductBrowser from "./components/productBrowser";
-import UserButton from "./components/signUpButton";
+
 import UserAuth from "./components/userAuth";
-import {createClient} from "./lib/Supabase/server";
+
 import { Suspense } from "react";
 
 export default async function Home() {
