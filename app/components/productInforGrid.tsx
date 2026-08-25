@@ -6,9 +6,10 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 type ProductInfoGrid = {
     product: Product | undefined;
+    isLoggedIn: boolean
 }
 
-export default function ProductInfoGrid({product}: ProductInfoGrid) {
+export default function ProductInfoGrid({product, isLoggedIn}: ProductInfoGrid) {
 
     const router = useRouter();
 
@@ -86,7 +87,8 @@ export default function ProductInfoGrid({product}: ProductInfoGrid) {
                     {editing ? (<input value={stock} onChange={(e) => setStock(e.target.value)} className="bg-gray-100 border-2"></input>) : (<p className="text-gray-600">{stock}</p>) }
                     
                     
-                    {!editing && 
+                    {!editing && isLoggedIn &&
+
                     <button onClick={() => setEditing(true)}>
 
                         

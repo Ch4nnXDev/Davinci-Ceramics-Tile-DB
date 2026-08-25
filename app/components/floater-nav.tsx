@@ -125,7 +125,6 @@ export default function FloaterNav() {
         </span>
       </button>
 
-      {/* Calculator */}
       <button
         className="
           group/item

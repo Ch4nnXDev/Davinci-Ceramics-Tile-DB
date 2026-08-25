@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 import Image from "next/image";
 import getProductBySlug from "@/app/lib/getProductBySlug";
 import ProductInfoGrid from '@/app/components/productInforGrid';
+import {createClient} from '@/app/lib/Supabase/server';
 
 
 
@@ -21,7 +22,11 @@ export default function Page({
 
 async function Product({params} : {params: Promise<{ slug: string }>}) {
 
-    
+    const supabase = await createClient();
+
+    const { data } = await supabase.auth.getUser();
+
+    const isLoggedIn = !!data.user;
     
     const { slug } = await params;
     const product = await getProductBySlug(slug);
@@ -59,7 +64,7 @@ async function Product({params} : {params: Promise<{ slug: string }>}) {
                     />
                 </div>
 
-                <ProductInfoGrid product={product}/>
+                <ProductInfoGrid product={product} isLoggedIn={isLoggedIn}/>
 
 
                 <div className="w-full mt-16">
