@@ -24,9 +24,9 @@ async function Product({params} : {params: Promise<{ slug: string }>}) {
 
     const supabase = await createClient();
 
-    const { data } = await supabase.auth.getUser();
+    const { data } = await supabase.auth.getClaims();
 
-    const isLoggedIn = !!data.user;
+    const isLoggedIn = !!data?.claims?.sub;
     
     const { slug } = await params;
     const product = await getProductBySlug(slug);

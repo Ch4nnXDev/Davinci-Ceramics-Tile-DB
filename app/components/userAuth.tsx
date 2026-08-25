@@ -5,9 +5,9 @@ export default async function UserAuth() {
 
     const supabase = await createClient();
 
-    const {data} = await supabase.auth.getUser();
+    const {data} = await supabase.auth.getClaims();
 
-    const isLogged = !!data.user;
+    const isLogged = !!data?.claims?.sub;
 
     return (
         <UserButton isLoggedIn={isLogged} />
