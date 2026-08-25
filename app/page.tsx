@@ -1,18 +1,15 @@
 import getAllProducts from "../app/lib/getProducts";
 import ProductBrowser from "./components/productBrowser";
 import UserButton from "./components/signUpButton";
+import UserAuth from "./components/userAuth";
 import {createClient} from "./lib/Supabase/server";
-
+import { Suspense } from "react";
 
 export default async function Home() {
 
   const products = await getAllProducts();
 
-  const supabase = await createClient();
 
-  const {data} = await supabase.auth.getUser();
-
-  const isLogged = !!data.user;
 
 
 
@@ -50,7 +47,14 @@ export default async function Home() {
           Davinci Tile Catalogue
         </h1>
 
-          <UserButton isLoggedIn={isLogged}/>
+
+        <Suspense fallback={<div>Loading</div>}>
+
+          <UserAuth />
+
+        </Suspense>
+
+
 
 
 
