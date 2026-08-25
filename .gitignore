@@ -40,3 +40,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 davinci-tiless-credetials.json
+
+#service worker build file for testing
+sw.js
