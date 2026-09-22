@@ -16,6 +16,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "drive.google.com",
       },
+      {
+        protocol: "https",
+        hostname: "pub-c5416e4f14514e57abd44fd5fe547406.r2.dev",
+      },
     ],
   },
 };
