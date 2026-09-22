@@ -1,12 +1,10 @@
 "use client";
+
 import useTileCalculator from "../lib/tileCalculator";
 import {
   Calculator as CalculatorIcon,
   Ruler,
 } from "lucide-react";
-
-
-
 
 export default function Calculator() {
   const calculator = useTileCalculator();
@@ -15,8 +13,6 @@ export default function Calculator() {
     <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-100 via-white to-slate-100 px-6 py-16">
 
       <div className="w-full max-w-4xl overflow-hidden rounded-[32px] border border-white/80 bg-white/60 shadow-[0_20px_80px_rgba(15,23,42,0.12)] backdrop-blur-2xl">
-
-
 
         <div className="border-b border-slate-200/60 px-8 py-7">
 
@@ -47,9 +43,7 @@ export default function Calculator() {
         </div>
 
 
-
         <div className="grid gap-8 p-8 md:grid-cols-2">
-
 
 
           <div>
@@ -62,11 +56,61 @@ export default function Calculator() {
                 Measurements
               </h2>
 
+              {/* Calculation Mode */}
+
+              <div className="ml-auto flex rounded-xl border border-slate-200 bg-white/60 p-1">
+
+                <button
+                  type="button"
+                  onClick={() =>
+                    calculator.setCalculatorMode("dimensions")
+                  }
+                  className={`
+                    rounded-lg
+                    px-3
+                    py-1.5
+                    text-xs
+                    font-medium
+                    transition-all
+                    ${
+                      calculator.calculatorMode === "dimensions"
+                        ? "bg-slate-900 text-white shadow-sm"
+                        : "text-slate-500 hover:text-slate-900"
+                    }
+                  `}
+                >
+                  Dimensions
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() =>
+                    calculator.setCalculatorMode("area")
+                  }
+                  className={`
+                    rounded-lg
+                    px-3
+                    py-1.5
+                    text-xs
+                    font-medium
+                    transition-all
+                    ${
+                      calculator.calculatorMode === "area"
+                        ? "bg-slate-900 text-white shadow-sm"
+                        : "text-slate-500 hover:text-slate-900"
+                    }
+                  `}
+                >
+                  Area
+                </button>
+
+              </div>
+
             </div>
+
 
             <div className="space-y-5">
 
-             
 
               <Input
                 label="Tile Length"
@@ -76,7 +120,6 @@ export default function Calculator() {
                 onChange={calculator.setTileLength}
               />
 
-             
 
               <Input
                 label="Tile Width"
@@ -86,30 +129,44 @@ export default function Calculator() {
                 onChange={calculator.setTileWidth}
               />
 
-          
+
               <div className="my-7 h-px bg-slate-200/70" />
 
-            
 
-              <Input
-                label="Room Length"
-                placeholder="12"
-                unit="ft"
-                value={calculator.roomLength}
-                onChange={calculator.setRoomLength}
-              />
+              {/* Room Measurement */}
 
-            
+              {calculator.calculatorMode === "dimensions" ? (
 
-              <Input
-                label="Room Width"
-                placeholder="10"
-                unit="ft"
-                value={calculator.roomWidth}
-                onChange={calculator.setRoomWidth}
-              />
+                <>
+                  <Input
+                    label="Room Length"
+                    placeholder="12"
+                    unit="ft"
+                    value={calculator.roomLength}
+                    onChange={calculator.setRoomLength}
+                  />
 
-        
+                  <Input
+                    label="Room Width"
+                    placeholder="10"
+                    unit="ft"
+                    value={calculator.roomWidth}
+                    onChange={calculator.setRoomWidth}
+                  />
+                </>
+
+              ) : (
+
+                <Input
+                  label="Room Area"
+                  placeholder="120"
+                  unit="ft²"
+                  value={calculator.manualArea}
+                  onChange={calculator.setManualArea}
+                />
+
+              )}
+
 
               <div>
 
@@ -157,17 +214,14 @@ export default function Calculator() {
 
           </div>
 
-        
 
           <div className="relative overflow-hidden rounded-[28px] border border-white/80 bg-white/55 p-7 shadow-inner backdrop-blur-xl">
 
-          
 
             <div className="pointer-events-none absolute -right-20 -top-20 h-48 w-48 rounded-full bg-white/90 blur-3xl" />
 
             <div className="relative">
 
-              
 
               <div className="mb-8 flex items-center gap-2">
 
@@ -177,7 +231,6 @@ export default function Calculator() {
 
               </div>
 
-             
 
               <p className="text-sm text-slate-400">
                 Required tiles
@@ -195,11 +248,9 @@ export default function Calculator() {
 
               </div>
 
-             
 
               <div className="my-8 h-px bg-slate-200/70" />
 
-              
 
               <div className="space-y-4">
 
@@ -225,7 +276,6 @@ export default function Calculator() {
 
               </div>
 
-              {/* Final Result */}
 
               <div className="mt-8 rounded-2xl border border-slate-200/70 bg-white/70 px-5 py-4 shadow-sm">
 
@@ -254,7 +304,6 @@ export default function Calculator() {
     </section>
   );
 }
-
 
 
 function Input({
