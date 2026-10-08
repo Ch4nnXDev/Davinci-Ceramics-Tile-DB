@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import {User, LogOutIcon} from 'lucide-react';
 import {XIcon} from "lucide-react";
-
+import { redirect } from 'next/navigation';
 import createClient from '../lib/Supabase/client';
 type UserProps = {
     isLoggedIn: boolean
@@ -47,7 +47,7 @@ export default function UserButton({isLoggedIn}: UserProps) {
             return;
         }
 
-        router.refresh();
+        redirect("/login");
         
 
     }
