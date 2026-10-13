@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 type ProductInfoGrid = {
     product: Product | undefined;
     isLoggedIn: boolean;
+    
     canEdit: boolean;
 
 }
