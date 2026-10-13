@@ -3,6 +3,7 @@ import Image from "next/image";
 import getProductBySlug from "@/app/lib/getProductBySlug";
 import ProductInfoGrid from '@/app/components/productInforGrid';
 import {createClient} from '@/app/lib/Supabase/server';
+import checkRole from '@/app/lib/checkRole';
 
 
 
@@ -26,6 +27,12 @@ async function Product({params} : {params: Promise<{ slug: string }>}) {
 
     const { data } = await supabase.auth.getClaims();
 
+    const userId = data?.claims?.sub;
+    const role = userId ? await checkRole(userId): null;
+
+    const canEdit = role == "admin" || role == "editor"
+
+    
     const isLoggedIn = !!data?.claims?.sub;
     
     const { slug } = await params;
@@ -64,7 +71,7 @@ async function Product({params} : {params: Promise<{ slug: string }>}) {
                     />
                 </div>
 
-                <ProductInfoGrid product={product} isLoggedIn={isLoggedIn}/>
+                <ProductInfoGrid product={product} isLoggedIn={isLoggedIn} canEdit={canEdit}/>
 
 
                 <div className="w-full mt-16">
